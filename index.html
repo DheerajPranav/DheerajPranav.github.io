@@ -3,470 +3,785 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dheeraj Pranav — ML Engineer / Data Scientist</title>
+<title>Dheeraj Pranav — Machine Learning Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink: #0A0D12;
-    --panel: #12161D;
-    --panel-2: #171C24;
-    --line: #232A35;
-    --text: #E8E6DF;
-    --text-dim: #8B93A1;
-    --text-faint: #5A6270;
-    --amber: #E8A33D;
-    --amber-dim: #7A5B26;
-    --teal: #4FD1C5;
-    --radius: 10px;
+    --bg:        #0A0D12;
+    --bg-raise:  #10141B;
+    --panel:     #12161E;
+    --line:      #212832;
+    --line-soft: #1A2029;
+    --ink:       #E7EBF1;
+    --ink-dim:   #97A2B2;
+    --ink-faint: #5C6577;
+    --signal:    #4C6FFF;
+    --signal-dim:#2A3A8C;
+    --amber:     #FFB020;
+    --radius:    3px;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
   body{
-    background: var(--ink);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
   }
-  body::before{
-    content:"";
+  ::selection{ background:var(--signal); color:#fff; }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', 'Inter', sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- background grid texture ---------- */
+  .grid-field{
     position:fixed; inset:0;
     background-image:
-      linear-gradient(rgba(232,163,61,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232,163,61,0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 85%);
     pointer-events:none;
     z-index:0;
   }
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  .display{font-family:'Space Grotesk', sans-serif;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 32px; position:relative; z-index:1;}
 
-  /* NAV */
+  /* ---------- nav ---------- */
   nav{
     position:sticky; top:0; z-index:50;
     backdrop-filter: blur(10px);
-    background: rgba(10,13,18,0.78);
-    border-bottom:1px solid var(--line);
+    background:rgba(10,13,18,0.82);
+    border-bottom:1px solid var(--line-soft);
   }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
-  .brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; letter-spacing:0.02em;}
+  nav .wrap{
+    height:64px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:600; font-size:15px; }
   .brand-mark{
-    width:30px; height:30px; border-radius:7px;
-    background: linear-gradient(135deg, var(--amber), #b9772a);
-    display:flex; align-items:center; justify-content:center;
-    color:#0A0D12; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 3px var(--signal-dim);
   }
-  .nav-links{display:flex; gap:30px; font-size:14px; color:var(--text-dim);}
-  .nav-links a:hover{color:var(--amber);}
-  .nav-icons{display:flex; gap:16px; align-items:center;}
-  .nav-icons a{
-    width:34px; height:34px; border:1px solid var(--line); border-radius:8px;
-    display:flex; align-items:center; justify-content:center; color:var(--text-dim);
-    transition: all .18s ease;
+  .nav-links{ display:flex; gap:28px; align-items:center; }
+  .nav-links a{
+    font-size:13.5px; color:var(--ink-dim);
+    transition:color .15s;
   }
-  .nav-icons a:hover{ border-color:var(--amber); color:var(--amber); transform:translateY(-1px);}
-  @media (max-width:780px){ .nav-links{display:none;} }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{
+    border:1px solid var(--line);
+    padding:7px 14px;
+    border-radius:var(--radius);
+    font-size:13px;
+    color:var(--ink) !important;
+  }
+  .nav-cta:hover{ border-color:var(--signal); }
+  .nav-mobile-hide{ display:flex; }
+  @media (max-width:720px){ .nav-mobile-hide{ display:none; } }
 
-  /* HERO */
-  header.hero{ padding:96px 0 64px; position:relative; }
-  .repo-tag{
+  section{ position:relative; z-index:1; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:110px 0 90px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:860px){ .hero{ grid-template-columns:1fr; padding:64px 0 48px; } }
+
+  .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--teal);
-    border:1px solid rgba(79,209,197,0.3); background:rgba(79,209,197,0.06);
-    padding:6px 12px; border-radius:6px; margin-bottom:28px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--amber);
+    letter-spacing:.06em;
+    margin-bottom:22px;
   }
-  .repo-tag .dot{width:6px;height:6px;border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal);}
-  h1.name{
-    font-family:'Space Grotesk',sans-serif; font-weight:700;
-    font-size: clamp(38px, 6vw, 66px); line-height:1.05; letter-spacing:-0.02em;
-    margin-bottom:18px;
+  .eyebrow::before{
+    content:''; width:6px; height:6px; background:var(--amber); border-radius:50%;
+    box-shadow:0 0 8px var(--amber);
   }
-  h1.name span{color:var(--amber);}
-  .role{
-    font-size: clamp(16px,2.2vw,20px); color:var(--text-dim); max-width:640px; margin-bottom:24px;
-    font-weight:500;
+  .hero-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(22px, 2.6vw, 28px);
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
   }
-  .objective{ max-width:620px; color:var(--text-dim); font-size:15px; margin-bottom:34px;}
-  .tags{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;}
-  .chip{
-    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim);
-    border:1px solid var(--line); padding:6px 12px; border-radius:20px;
-    background: var(--panel);
+  .hero-title{
+    font-size:clamp(32px, 4.6vw, 52px);
+    line-height:1.06;
+    color:var(--ink);
   }
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-title span{ color:var(--ink-faint); }
+  .hero-sub{
+    margin-top:22px;
+    font-size:16.5px;
+    color:var(--ink-dim);
+    max-width:480px;
+    line-height:1.65;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex; gap:12px; flex-wrap:wrap;
+  }
   .btn{
-    font-family:'Inter',sans-serif; font-weight:600; font-size:14px;
-    padding:13px 22px; border-radius:8px; display:inline-flex; align-items:center; gap:8px;
-    transition: all .18s ease; border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px;
+    border-radius:var(--radius);
+    font-size:14px; font-weight:500;
+    border:1px solid var(--line);
+    transition:border-color .15s, background .15s, transform .15s;
   }
-  .btn-primary{ background:var(--amber); color:#161006; }
-  .btn-primary:hover{ box-shadow:0 0 0 3px rgba(232,163,61,0.18); transform:translateY(-1px);}
-  .btn-outline{ border-color:var(--line); color:var(--text); background:var(--panel);}
-  .btn-outline:hover{ border-color:var(--text-faint); transform:translateY(-1px);}
+  .btn-primary{ background:var(--signal); border-color:var(--signal); color:#fff; }
+  .btn-primary:hover{ background:#3d5ce0; transform:translateY(-1px); }
+  .btn-ghost:hover{ border-color:var(--ink-faint); }
 
-  /* hero graphic */
-  .hero-graphic{ position:absolute; right:-40px; top:60px; width:340px; opacity:0.55; pointer-events:none;}
-  @media (max-width:900px){ .hero-graphic{display:none;} }
-
-  /* METRICS STRIP */
-  .metrics{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:36px 0; }
-  .metrics .wrap{ display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
-  @media (max-width:900px){ .metrics .wrap{grid-template-columns:repeat(2,1fr);} }
-  .metric{ text-align:left; }
-  .metric .num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; color:var(--amber);}
-  .metric .lbl{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-faint); margin-top:4px; letter-spacing:0.01em;}
-
-  /* SECTIONS */
-  section{ padding:88px 0; position:relative; }
-  .section-head{ margin-bottom:44px; }
-  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; display:block;}
-  h2{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,36px); letter-spacing:-0.01em;}
-  .section-sub{ color:var(--text-dim); font-size:15px; margin-top:10px; max-width:600px;}
-
-  /* MODEL CARD (experience) */
-  .card{
-    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
-    padding:30px 32px; margin-bottom:22px; transition: border-color .2s ease;
+  .hero-meta{
+    margin-top:38px;
+    display:flex; gap:26px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px; color:var(--ink-faint);
   }
-  .card:hover{ border-color: rgba(232,163,61,0.35); }
-  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:16px;}
-  .card-title-group{display:flex; align-items:center; gap:14px;}
-  .card-logo{
-    width:44px; height:44px; border-radius:8px; background:var(--panel-2); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--amber); font-size:16px;
-  }
-  .card-title{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px;}
-  .card-company{ color:var(--text-dim); font-size:14px; margin-top:2px;}
-  .card-meta{ text-align:right; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text-faint);}
-  .card ul{ list-style:none; margin:18px 0 20px; }
-  .card ul li{ position:relative; padding-left:20px; margin-bottom:11px; color:var(--text-dim); font-size:14.5px;}
-  .card ul li::before{ content:"›"; position:absolute; left:0; color:var(--amber); font-family:'IBM Plex Mono',monospace;}
-  .stack-row{ display:flex; flex-wrap:wrap; gap:8px; }
-  .stack-pill{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--teal);
-    border:1px solid rgba(79,209,197,0.25); background:rgba(79,209,197,0.05);
-    padding:4px 10px; border-radius:5px;
-  }
-  .card-metrics{ display:flex; gap:26px; flex-wrap:wrap; margin-top:20px; padding-top:18px; border-top:1px dashed var(--line);}
-  .card-metric .val{ font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--amber); font-size:18px;}
-  .card-metric .key{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.03em;}
+  .hero-meta b{ color:var(--ink-dim); font-weight:500; }
 
-  /* PROJECTS GRID */
-  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  @media (max-width:900px){ .grid-3{grid-template-columns:1fr;} }
-  .proj-card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px; display:flex; flex-direction:column; height:100%; }
-  .proj-card:hover{ border-color: rgba(232,163,61,0.35); }
-  .proj-tag{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px;}
-  .proj-title{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; margin-bottom:10px;}
-  .proj-desc{ color:var(--text-dim); font-size:14px; flex:1; margin-bottom:16px;}
+  /* ---------- signature: signal graph ---------- */
+  .signal-graph{ width:100%; height:auto; }
+  .sg-line{ stroke:var(--line); stroke-width:1; fill:none; }
+  .sg-pulse{ stroke:var(--signal); stroke-width:1.6; fill:none; opacity:0.9; }
+  .sg-node{ fill:var(--bg-raise); stroke:var(--line); stroke-width:1.2; }
+  .sg-node-lit{ fill:var(--signal); stroke:none; }
+  .sg-node-amber{ fill:var(--amber); stroke:none; }
+  .sg-label{ font-family:'JetBrains Mono', monospace; font-size:9.5px; fill:var(--ink-faint); }
+  @keyframes dashmove{ to{ stroke-dashoffset:-200; } }
+  .sg-anim{ stroke-dasharray:4 7; animation:dashmove 6s linear infinite; }
+  @media (prefers-reduced-motion: reduce){ .sg-anim{ animation:none; } }
+
+  /* ---------- stat strip ---------- */
+  .stat-strip{
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+    background:var(--bg-raise);
+  }
+  .stat-strip .wrap{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    padding:0;
+  }
+  .stat{
+    padding:28px 22px;
+    border-right:1px solid var(--line-soft);
+  }
+  .stat:last-child{ border-right:none; }
+  @media (max-width:720px){
+    .stat-strip .wrap{ grid-template-columns:repeat(2, 1fr); }
+    .stat:nth-child(2){ border-right:none; }
+  }
+  .stat-num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:28px; font-weight:600; color:var(--ink);
+  }
+  .stat-num span{ color:var(--signal); }
+  .stat-label{
+    margin-top:6px; font-size:12.5px; color:var(--ink-faint);
+    line-height:1.4;
+  }
+
+  /* ---------- section shell ---------- */
+  .section{ padding:100px 0; }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:52px; gap:20px; flex-wrap:wrap;
+  }
+  .section-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--ink-faint); letter-spacing:.05em;
+  }
+  .section-head h2{ font-size:30px; margin-top:6px; }
+
+  /* ---------- experience timeline ---------- */
+  .tl{ position:relative; }
+  .tl::before{
+    content:''; position:absolute; left:52px; top:6px; bottom:6px;
+    width:1px; background:var(--line);
+  }
+  @media (max-width:640px){ .tl::before{ left:20px; } }
+  .tl-item{
+    position:relative;
+    display:grid;
+    grid-template-columns:104px 1fr;
+    gap:28px;
+    padding-bottom:56px;
+  }
+  .tl-item:last-child{ padding-bottom:0; }
+  @media (max-width:640px){ .tl-item{ grid-template-columns:40px 1fr; gap:16px; } }
+  .tl-index{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px; color:var(--ink-faint);
+    padding-top:2px;
+    position:relative;
+  }
+  .tl-index::after{
+    content:''; position:absolute; right:-6px; top:6px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--bg); border:1.5px solid var(--signal);
+  }
+  @media (max-width:640px){ .tl-index::after{ right:-16px; } .tl-index{ display:none; } }
+  .tl-body h3{ font-size:19px; }
+  .tl-role{ color:var(--ink-dim); font-size:13.5px; margin-top:2px; }
+  .tl-time{
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--ink-faint); margin-top:8px;
+  }
+  .tl-desc{ margin-top:16px; color:var(--ink-dim); font-size:14.5px; line-height:1.7; }
+  .tl-desc li{ margin-bottom:8px; }
+  .tl-desc ul{ margin:0; padding-left:18px; }
+  .tl-stack{
+    margin-top:16px; display:flex; flex-wrap:wrap; gap:7px;
+  }
+  .chip{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--ink-faint);
+    border:1px solid var(--line); padding:4px 9px; border-radius:20px;
+  }
+
+  /* ---------- skills ---------- */
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width:640px){ .skill-grid{ grid-template-columns:1fr; } }
+  .skill-cell{ background:var(--panel); padding:26px; }
+  .skill-cell h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--amber); font-weight:500;
+    letter-spacing:.04em; margin-bottom:14px;
+  }
+  .skill-cell .chip{ color:var(--ink-dim); }
+  .skill-cell .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+
+  /* ---------- projects ---------- */
+  .proj-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+  }
+  @media (max-width:720px){ .proj-grid{ grid-template-columns:1fr; } }
+  .proj-card{
+    background:var(--panel); padding:30px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:background .15s;
+  }
+  .proj-card:hover{ background:#151a23; }
+  .proj-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+  .proj-card h3{ font-size:17px; }
+  .proj-arrow{
+    color:var(--ink-faint); font-size:15px; transition:transform .15s, color .15s;
+  }
+  .proj-card:hover .proj-arrow{ transform:translate(3px,-3px); color:var(--signal); }
+  .proj-desc{ color:var(--ink-dim); font-size:14px; line-height:1.65; flex-grow:1; }
   .proj-tags{ display:flex; flex-wrap:wrap; gap:6px; }
 
-  /* SKILLS */
-  .skills-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  @media (max-width:900px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
-  .skill-col .skill-head{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--amber); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line);}
-  .skill-col .chip{ display:inline-block; margin:0 6px 8px 0;}
-
-  /* EDU + CERTS */
-  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:40px;}
-  @media (max-width:900px){ .two-col{grid-template-columns:1fr;} }
-  .edu-item{ margin-bottom:22px; }
-  .edu-degree{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;}
-  .edu-school{ color:var(--text-dim); font-size:14px; margin-top:2px;}
-  .edu-year{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-faint); margin-top:4px;}
-  .cert-item{ display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; font-size:14px; color:var(--text-dim);}
-  .cert-item .bullet{ color:var(--amber); font-family:'IBM Plex Mono',monospace;}
-
-  /* CONTACT / FOOTER */
-  .contact-panel{
-    background: linear-gradient(160deg, var(--panel) 0%, var(--panel-2) 100%);
-    border:1px solid var(--line); border-radius:14px; padding:56px 48px; text-align:center;
+  /* ---------- blog ---------- */
+  .blog-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
   }
-  .contact-panel h2{ margin-bottom:14px; }
-  .contact-panel p{ color:var(--text-dim); max-width:480px; margin:0 auto 30px; font-size:15px;}
-  .contact-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:26px;}
-  .contact-meta{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text-faint); display:flex; gap:24px; justify-content:center; flex-wrap:wrap;}
-  footer{ padding:36px 0 50px; text-align:center; }
-  footer p{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-faint);}
+  @media (max-width:860px){ .blog-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){ .blog-grid{ grid-template-columns:1fr; } }
+  .blog-card{
+    background:var(--panel); padding:26px;
+    display:flex; flex-direction:column; gap:12px; min-height:190px;
+    transition:background .15s;
+  }
+  .blog-card:hover{ background:#151a23; }
+  .blog-date{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-faint);
+  }
+  .blog-card h3{ font-size:15.5px; line-height:1.35; }
+  .blog-desc{ color:var(--ink-dim); font-size:13px; line-height:1.6; flex-grow:1; }
+  .blog-read{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--signal);
+    display:flex; align-items:center; gap:6px;
+  }
+  .blog-card:hover .blog-read{ text-decoration:underline; }
+  .blog-card.blog-cta{
+    background:linear-gradient(160deg, var(--bg-raise), var(--panel));
+    align-items:flex-start; justify-content:center;
+  }
+  .blog-card.blog-cta h3{ font-size:17px; }
 
-  .reveal{ opacity:0; transform:translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  /* ---------- neurotusks feature ---------- */
+  .feature{
+    border:1px solid var(--line);
+    background:linear-gradient(160deg, var(--bg-raise), var(--panel));
+    padding:48px;
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+  }
+  @media (max-width:800px){ .feature{ grid-template-columns:1fr; padding:32px; } }
+  .feature h2{ font-size:26px; }
+  .feature p{ color:var(--ink-dim); font-size:14.5px; margin-top:14px; line-height:1.7; }
+  .feature-links{ margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; }
+  .feature-stat-list{ display:flex; flex-direction:column; gap:0; }
+  .feature-stat{
+    display:flex; justify-content:space-between;
+    padding:16px 0; border-bottom:1px solid var(--line-soft);
+    font-size:13.5px;
+  }
+  .feature-stat:last-child{ border-bottom:none; }
+  .feature-stat span:first-child{ color:var(--ink-dim); }
+  .feature-stat span:last-child{ font-family:'JetBrains Mono', monospace; color:var(--ink); }
+
+  /* ---------- education / certs ---------- */
+  .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px;
+  }
+  @media (max-width:760px){ .split{ grid-template-columns:1fr; gap:40px; } }
+  .edu-item{ padding:20px 0; border-bottom:1px solid var(--line-soft); }
+  .edu-item:first-child{ padding-top:0; }
+  .edu-item h3{ font-size:15.5px; }
+  .edu-item .tl-time{ margin-top:4px; }
+  .edu-item p{ margin-top:8px; color:var(--ink-dim); font-size:13.5px; }
+  .cert-list{ list-style:none; margin:0; padding:0; }
+  .cert-list li{
+    display:flex; gap:12px; padding:13px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:14px; color:var(--ink-dim);
+  }
+  .cert-list li:last-child{ border-bottom:none; }
+  .cert-list li::before{ content:'—'; color:var(--ink-faint); flex-shrink:0; }
+
+  /* ---------- contact / footer ---------- */
+  .contact{
+    text-align:center; padding:110px 0 70px;
+  }
+  .contact .eyebrow{ justify-content:center; display:flex; }
+  .contact h2{ font-size:clamp(30px,4.4vw,46px); margin-top:8px; }
+  .contact p{ color:var(--ink-dim); margin-top:18px; max-width:480px; margin-left:auto; margin-right:auto; }
+  .contact-actions{ margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:26px 0;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  footer, footer a{ font-size:12.5px; color:var(--ink-faint); }
+  footer a:hover{ color:var(--ink-dim); }
+  .footer-links{ display:flex; gap:20px; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 </style>
 </head>
 <body>
+<div class="grid-field"></div>
 
 <nav>
   <div class="wrap">
-    <div class="brand"><div class="brand-mark">DP</div> Dheeraj Pranav</div>
-    <div class="nav-links">
-      <a href="#experience">Experience</a>
+    <div class="brand"><span class="brand-mark"></span> Dheeraj Pranav</div>
+    <div class="nav-links nav-mobile-hide">
+      <a href="#work">Experience</a>
       <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-icons">
-      <a href="https://www.linkedin.com/in/dheerajpranav/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-      </a>
-      <a href="https://github.com/DheerajPranav" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.79-.25.79-.55v-2.1c-3.2.7-3.87-1.4-3.87-1.4-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-      </a>
+      <a href="#blog">Writing</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="repo-tag"><span class="dot"></span> krovvididheeraj / dheeraj-pranav — role: ml-engineer</div>
-    <h1 class="name">Dheeraj Pranav<span>.</span></h1>
-    <p class="role">Senior Data Scientist building recommender systems, NLP pipelines &amp; agentic AI — with the business metrics to prove they work.</p>
-    <p class="objective">Experienced AI professional focused on cutting-edge, production-grade ML — from hybrid deep learning architectures to explainable, deployable systems that move real business numbers, not just benchmarks.</p>
-    <div class="tags">
-      <span class="chip">Transformers</span>
-      <span class="chip">Recommender Systems</span>
-      <span class="chip">Explainable AI</span>
-      <span class="chip">Agentic AI / LLMs</span>
-      <span class="chip">Time Series</span>
-      <span class="chip">MLOps</span>
+<!-- HERO -->
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">HYDERABAD, INDIA · AI ENGINEERING @ NOVARTIS</div>
+    <div class="hero-name">Dheeraj Pranav</div>
+    <h1 class="hero-title">Making machines<br><span>think — then act.</span></h1>
+    <p class="hero-sub">6+ years moving models from research to production. I bridge foundational math and scalable ML architecture, and my current focus is the shift from applied ML into Generative AI and multi‑agent systems — RAG pipelines, LLM orchestration, and agents that check their own work.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/dheerajpranav/" target="_blank">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/DheerajPranav" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://neurotusks.substack.com/" target="_blank">NeuroTusks ↗</a>
     </div>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#experience">View experience →</a>
-      <a class="btn btn-outline" href="#contact">Get in touch</a>
+    <div class="hero-meta">
+      <div><b>6+ yrs</b> in AI / ML</div>
+      <div><b>1.5+ yrs</b> in GenAI &amp; agentic systems</div>
+      <div><b>MSc</b> Woolf University, '25</div>
     </div>
   </div>
 
-  <svg class="hero-graphic" viewBox="0 0 300 300" fill="none">
-    <g stroke="#E8A33D" stroke-width="1" opacity="0.5">
-      <circle cx="60" cy="60" r="4" fill="#E8A33D"/>
-      <circle cx="60" cy="150" r="4" fill="#E8A33D"/>
-      <circle cx="60" cy="240" r="4" fill="#E8A33D"/>
-      <circle cx="160" cy="100" r="4" fill="#4FD1C5"/>
-      <circle cx="160" cy="200" r="4" fill="#4FD1C5"/>
-      <circle cx="260" cy="150" r="5" fill="#E8A33D"/>
-      <path d="M60 60 L160 100 M60 150 L160 100 M60 150 L160 200 M60 240 L160 200 M160 100 L260 150 M160 200 L260 150"/>
-    </g>
-  </svg>
-</header>
+  <div>
+    <svg class="signal-graph" viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- static edges -->
+      <path class="sg-line" d="M40 60 L170 40 L300 90"/>
+      <path class="sg-line" d="M40 60 L170 150"/>
+      <path class="sg-line" d="M170 40 L170 150"/>
+      <path class="sg-line" d="M300 90 L170 150"/>
+      <path class="sg-line" d="M40 60 L60 210"/>
+      <path class="sg-line" d="M170 150 L60 210 L200 260"/>
+      <path class="sg-line" d="M170 150 L200 260"/>
+      <path class="sg-line" d="M300 90 L330 220 L200 260"/>
+      <path class="sg-line" d="M200 260 L230 300"/>
+      <path class="sg-line" d="M330 220 L230 300"/>
 
-<section class="metrics">
-  <div class="wrap">
-    <div class="metric"><div class="num">5%</div><div class="lbl">ANNUAL RX SALES LIFT</div></div>
-    <div class="metric"><div class="num">10%+</div><div class="lbl">CTR BOOST (DEEPFM)</div></div>
-    <div class="metric"><div class="num">15%</div><div class="lbl">MORE HCP REACH</div></div>
-    <div class="metric"><div class="num">20%</div><div class="lbl">FORECAST ACCURACY GAIN</div></div>
-    <div class="metric"><div class="num">100%</div><div class="lbl">ETL PIPELINE AUTOMATION</div></div>
+      <!-- animated pulses along a few paths -->
+      <path class="sg-pulse sg-anim" d="M40 60 L170 40 L300 90"/>
+      <path class="sg-pulse sg-anim" d="M170 150 L60 210 L200 260"/>
+      <path class="sg-pulse sg-anim" d="M300 90 L330 220 L230 300"/>
+
+      <!-- nodes -->
+      <circle class="sg-node" cx="40" cy="60" r="6"/>
+      <circle class="sg-node sg-node-lit" cx="170" cy="40" r="7"/>
+      <circle class="sg-node" cx="300" cy="90" r="6"/>
+      <circle class="sg-node sg-node-amber" cx="170" cy="150" r="8"/>
+      <circle class="sg-node" cx="60" cy="210" r="6"/>
+      <circle class="sg-node sg-node-lit" cx="330" cy="220" r="6"/>
+      <circle class="sg-node" cx="200" cy="260" r="7"/>
+      <circle class="sg-node sg-node-amber" cx="230" cy="300" r="6"/>
+
+      <text class="sg-label" x="8" y="45">llm.core</text>
+      <text class="sg-label" x="150" y="26">rag.retriever</text>
+      <text class="sg-label" x="280" y="76">vector.store</text>
+      <text class="sg-label" x="130" y="178">langchain</text>
+      <text class="sg-label" x="10" y="230">crewai.agent</text>
+      <text class="sg-label" x="298" y="205">reflect()</text>
+      <text class="sg-label" x="168" y="285">tool.call</text>
+    </svg>
   </div>
 </section>
 
-<section id="experience">
+<!-- STAT STRIP -->
+<div class="stat-strip">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Experience</span>
-      <h2>Model cards from the field</h2>
-      <p class="section-sub">Each role, documented the way a model ships — architecture, stack, and the metric it moved.</p>
+    <div class="stat">
+      <div class="stat-num"><span>5</span>–<span>20</span>%</div>
+      <div class="stat-label">typical business‑metric lift delivered by production ML models I've shipped</div>
     </div>
+    <div class="stat">
+      <div class="stat-num"><span>10</span>%+</div>
+      <div class="stat-label">engagement gains from recommender and CTR models moved into production</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span>100</span>%</div>
+      <div class="stat-label">automation on ETL frameworks I've built — zero manual re‑processing</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span>6</span>+ <span style="font-size:16px;">yrs</span></div>
+      <div class="stat-label">taking models from research notebooks to real, monitored production systems</div>
+    </div>
+  </div>
+</div>
 
-    <div class="card reveal">
-      <div class="card-top">
-        <div class="card-title-group">
-          <div class="card-logo">N</div>
-          <div>
-            <div class="card-title">Sr. Data Science Analyst</div>
-            <div class="card-company">Novartis · Hyderabad, TS</div>
-          </div>
+<!-- EXPERIENCE -->
+<section class="section wrap" id="work">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag">// 2020 — PRESENT</div>
+      <h2>Where the work has happened</h2>
+    </div>
+  </div>
+
+  <div class="tl">
+    <div class="tl-item reveal">
+      <div class="tl-index">01 / Feb 23</div>
+      <div class="tl-body">
+        <h3>Sr. Data Science Analyst</h3>
+        <div class="tl-role">Novartis · Hyderabad</div>
+        <div class="tl-time">Feb 2023 — Present</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Spearheaded enterprise adoption of Generative AI, architecting LLM‑driven pipelines over the past 1.5 years to automate insights generation and enhance commercial analytics.</li>
+            <li>Built a Retrieval‑Augmented Generation system that synthesizes complex medical and promotional guidelines, accelerating compliance reviews.</li>
+            <li>Architected a self‑correcting Text‑to‑SQL agent in LangChain that turns natural‑language business questions into prescription‑database queries — with a reflection loop that tests, self‑corrects, and delivers the payload with no manual pull.</li>
+            <li>Led a hybrid Wide‑Deep network (ANN + Transformers) predicting doctor prescriptions, and shipped DeepFM CTR models that lifted engagement 10%+ and RX sales 5% annually.</li>
+          </ul>
         </div>
-        <div class="card-meta">Feb 2023 — Present<br>role: current</div>
-      </div>
-      <ul>
-        <li>Led a hybrid Wide-Deep Neural Network (ANN + Transformers) to predict doctor prescriptions (RX), integrating multi-channel promotional data and patient behavior with explainable AI for interpretability.</li>
-        <li>Engineered a custom business-impact metric and paired model outputs with a greedy optimization algorithm to pick the most effective promotional channel per doctor under real-world constraints.</li>
-        <li>Implemented DeepFM-based CTR prediction for non-personalized channels, and automated rule-based explanation generation for transparent, compliant recommendation decisions.</li>
-      </ul>
-      <div class="stack-row">
-        <span class="stack-pill">Python</span><span class="stack-pill">DataIKU</span><span class="stack-pill">Databricks</span>
-        <span class="stack-pill">MySQL</span><span class="stack-pill">Transformers</span><span class="stack-pill">Greedy Optimization</span>
-        <span class="stack-pill">Explainable AI</span>
-      </div>
-      <div class="card-metrics">
-        <div class="card-metric"><div class="val">+5%</div><div class="key">RX sales lift</div></div>
-        <div class="card-metric"><div class="val">+10%</div><div class="key">CTR / engagement</div></div>
-        <div class="card-metric"><div class="val">+15%</div><div class="key">HCP reach</div></div>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-top">
-        <div class="card-title-group">
-          <div class="card-logo">A</div>
-          <div>
-            <div class="card-title">AWS Machine Learning Engineer</div>
-            <div class="card-company">AspireNxt · Bangalore, KA</div>
-          </div>
+        <div class="tl-stack">
+          <span class="chip">LangChain</span><span class="chip">RAG</span><span class="chip">LLMs</span><span class="chip">Databricks</span><span class="chip">Transformers</span>
         </div>
-        <div class="card-meta">Apr 2022 — Jan 2023</div>
-      </div>
-      <ul>
-        <li>Designed scalable ML pipelines on a Dockerized CDC data stack (Airbyte, Airflow, DBT, PostgreSQL) with AWS SageMaker and Forecast for ingestion, transformation, and time-series forecasting.</li>
-        <li>Built and productionized deep learning and recommender models with PyTorch and AWS Personalize; added anomaly detection via Amazon Lookout for Metrics and automated deployment with Terraform + CI/CD.</li>
-      </ul>
-      <div class="stack-row">
-        <span class="stack-pill">PyTorch</span><span class="stack-pill">SageMaker</span><span class="stack-pill">AWS Personalize</span>
-        <span class="stack-pill">Airflow</span><span class="stack-pill">Terraform</span><span class="stack-pill">CI/CD</span>
       </div>
     </div>
 
-    <div class="card reveal">
-      <div class="card-top">
-        <div class="card-title-group">
-          <div class="card-logo">A</div>
-          <div>
-            <div class="card-title">Machine Learning Engineer</div>
-            <div class="card-company">Applicate AI · Bangalore, KA</div>
-          </div>
+    <div class="tl-item reveal">
+      <div class="tl-index">02 / Apr 22</div>
+      <div class="tl-body">
+        <h3>AWS Machine Learning Engineer</h3>
+        <div class="tl-role">AspireNxt · Bangalore</div>
+        <div class="tl-time">Apr 2022 — Jan 2023</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Designed scalable ML pipelines on a Dockerized CDC stack (Airbyte, Airflow, DBT, PostgreSQL) feeding SageMaker and Forecast for automated ingestion and time‑series forecasting.</li>
+            <li>Productionized recommender and deep learning models with PyTorch and AWS Personalize, added anomaly detection via Lookout for Metrics, and automated deploys with Terraform and CI/CD.</li>
+          </ul>
         </div>
-        <div class="card-meta">Apr 2020 — Mar 2022</div>
+        <div class="tl-stack">
+          <span class="chip">SageMaker</span><span class="chip">Airflow</span><span class="chip">Terraform</span><span class="chip">PyTorch</span>
+        </div>
       </div>
-      <ul>
-        <li>Drove ML team architecture and framework decisions; built a highly scalable, distributed ML framework for ETL jobs with automatic re-processing, reaching 100% automation.</li>
-        <li>Improved sales forecasting with a custom statistical quantile approach — a 20% performance gain — using stateless, idempotent pipeline design.</li>
-        <li>Built personalized recommender systems using hierarchical clustering and ranking for similarity and relevance scoring, plus an explainable-AI dashboard for stakeholder interpretability.</li>
-      </ul>
-      <div class="stack-row">
-        <span class="stack-pill">Python</span><span class="stack-pill">Kibana</span><span class="stack-pill">Jenkins</span>
-        <span class="stack-pill">AWS S3</span><span class="stack-pill">Clustering</span><span class="stack-pill">Bagging</span>
-      </div>
-      <div class="card-metrics">
-        <div class="card-metric"><div class="val">100%</div><div class="key">ETL automation</div></div>
-        <div class="card-metric"><div class="val">+20%</div><div class="key">forecast performance</div></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-index">03 / Apr 20</div>
+      <div class="tl-body">
+        <h3>Machine Learning Engineer</h3>
+        <div class="tl-role">Applicate AI · Bangalore</div>
+        <div class="tl-time">Apr 2020 — Mar 2022</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Built a distributed ML framework for ETL jobs with automatic re‑processing, taking manual intervention to zero.</li>
+            <li>Replaced the sales‑forecasting approach with a custom statistical quantile method, lifting model performance 20%.</li>
+            <li>Built personalized recommenders using hierarchical clustering and ranking for similarity and relevance scoring, plus an explainability dashboard for stakeholders.</li>
+          </ul>
+        </div>
+        <div class="tl-stack">
+          <span class="chip">Python</span><span class="chip">Jenkins</span><span class="chip">Kibana</span><span class="chip">Clustering</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Projects</span>
-      <h2>Things built outside the day job</h2>
-      <p class="section-sub">Published work and independent systems spanning NLP, agentic pipelines, and forecasting.</p>
+<!-- SKILLS -->
+<section class="section wrap">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag">// STACK</div>
+      <h2>What I build with</h2>
     </div>
-    <div class="grid-3">
-      <div class="proj-card reveal">
-        <div class="proj-tag">Published · NLP</div>
-        <div class="proj-title">Twitter Abusive Content Detection</div>
-        <div class="proj-desc">Collected data via the Twitter API, preprocessed with NLTK, and trained traditional and deep neural models using TF-IDF and word embeddings to flag abusive content, published with solid validation performance.</div>
-        <div class="proj-tags"><span class="stack-pill">NLTK</span><span class="stack-pill">TF-IDF</span><span class="stack-pill">Embeddings</span></div>
+  </div>
+  <div class="skill-grid reveal">
+    <div class="skill-cell">
+      <h3>GENAI & AGENTIC</h3>
+      <div class="tags">
+        <span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">LangChain</span><span class="chip">CrewAI</span><span class="chip">Multi‑Agent Systems</span>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-tag">Agentic AI</div>
-        <div class="proj-title">NeuroTusks Autonomous Workflow</div>
-        <div class="proj-desc">An end-to-end autonomous publishing system built on CrewAI, orchestrating a multi-agent pipeline for news extraction, dual-theme content synthesis, and automated weekly Substack publication.</div>
-        <div class="proj-tags"><span class="stack-pill">CrewAI</span><span class="stack-pill">Multi-agent</span><span class="stack-pill">LLMs</span></div>
+    </div>
+    <div class="skill-cell">
+      <h3>MODELING</h3>
+      <div class="tags">
+        <span class="chip">Neural Networks</span><span class="chip">Transformers</span><span class="chip">Recommender Systems</span><span class="chip">Time Series</span><span class="chip">NLP</span><span class="chip">CNNs</span>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-tag">Forecasting</div>
-        <div class="proj-title">Geo-Temporal Event Prediction</div>
-        <div class="proj-desc">A pipeline combining GDELT news data and Reddit social signals with NLP, geo-spatial analysis, and time-series modeling to generate early-warning insight into emerging socio-political unrest.</div>
-        <div class="proj-tags"><span class="stack-pill">GDELT</span><span class="stack-pill">Geo-spatial</span><span class="stack-pill">Time Series</span></div>
+    </div>
+    <div class="skill-cell">
+      <h3>ENGINEERING & MLOPS</h3>
+      <div class="tags">
+        <span class="chip">Python</span><span class="chip">R</span><span class="chip">PySpark</span><span class="chip">Bash</span><span class="chip">Flask</span><span class="chip">MLOps</span><span class="chip">Docker</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <h3>DATA & INFRA</h3>
+      <div class="tags">
+        <span class="chip">Airbyte</span><span class="chip">ETL Pipelines</span><span class="chip">Databricks</span><span class="chip">MySQL</span><span class="chip">AWS</span><span class="chip">Jenkins</span><span class="chip">Kibana</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <h3>FOUNDATIONS</h3>
+      <div class="tags">
+        <span class="chip">Statistics</span><span class="chip">Applied Math</span><span class="chip">DSA</span><span class="chip">OOP</span><span class="chip">ML Lifecycle</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Skills</span>
-      <h2>The stack</h2>
+<!-- PROJECTS -->
+<section class="section wrap" id="projects">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag">// SELECTED WORK</div>
+      <h2>Projects worth a closer look</h2>
     </div>
-    <div class="skills-grid">
-      <div class="skill-col reveal">
-        <div class="skill-head">Technical</div>
-        <span class="chip">Python</span><span class="chip">R</span><span class="chip">PySpark</span><span class="chip">Bash</span><span class="chip">Docker</span><span class="chip">MySQL</span><span class="chip">Flask</span><span class="chip">MLOps</span>
+  </div>
+  <div class="proj-grid reveal">
+
+    <a class="proj-card" href="https://github.com/DheerajPranav/neurotusks-agent" target="_blank">
+      <div class="proj-top"><h3>neurotusks-agent</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">A CrewAI multi‑agent system running on open‑source LLMs that researches, synthesizes, and publishes NeuroTusks — dynamic news extraction and brand‑consistent writing, with no manual editorial step.</p>
+      <div class="proj-tags"><span class="chip">CrewAI</span><span class="chip">Open‑source LLMs</span><span class="chip">Automation</span></div>
+    </a>
+
+    <div class="proj-card">
+      <div class="proj-top"><h3>Context‑Aware LLM Memory Engine</h3></div>
+      <p class="proj-desc">A persistent long‑term memory module for conversational LLMs — vector embeddings, dynamic entity extraction, and a background loop that compresses old conversations into knowledge graphs so agents recall preferences across sessions.</p>
+      <div class="proj-tags"><span class="chip">Vector DB</span><span class="chip">Memory</span><span class="chip">LLMs</span></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top"><h3>Autonomous PR Review Agent</h3></div>
+      <p class="proj-desc">A CrewAI code reviewer wired into GitHub Actions — analyzes diffs, flags vulnerabilities, enforces repo‑specific standards, and leaves context‑aware inline comments on every pull request.</p>
+      <div class="proj-tags"><span class="chip">CrewAI</span><span class="chip">GitHub Actions</span><span class="chip">Code Review</span></div>
+    </div>
+
+    <a class="proj-card" href="https://github.com/DheerajPranav/ML-Personalised-FrameWork" target="_blank">
+      <div class="proj-top"><h3>ML‑Personalised‑Framework</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">Core ML algorithms rebuilt from scratch — de‑bunking the black box behind the libraries most people just import.</p>
+      <div class="proj-tags"><span class="chip">Python</span><span class="chip">From scratch</span></div>
+    </a>
+
+    <div class="proj-card">
+      <div class="proj-top"><h3>Twitter Abusive Content Detection</h3></div>
+      <p class="proj-desc">Published research on flagging abusive tweets — Twitter API collection, NLTK preprocessing, TF‑IDF and embeddings feeding classical and deep models.</p>
+      <div class="proj-tags"><span class="chip">NLTK</span><span class="chip">TF‑IDF</span><span class="chip">Published</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WRITING / BLOG -->
+<section class="section wrap" id="blog">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag">// NEUROTUSKS · TECHNICAL DEEP DIVES</div>
+      <h2>Recent writing</h2>
+    </div>
+  </div>
+
+  <div class="blog-grid reveal">
+
+    <a class="blog-card" href="https://neurotusks.substack.com/p/the-simulation-paradigm-beyond-the" target="_blank">
+      <div class="blog-date">Jul 2026</div>
+      <h3>The Simulation Paradigm: Beyond the Token Box</h3>
+      <p class="blog-desc">Why next-token prediction is hitting a ceiling, and why serious teams are shifting toward world models instead.</p>
+      <div class="blog-read">Read on Substack →</div>
+    </a>
+
+    <a class="blog-card" href="https://neurotusks.substack.com/p/the-digital-disdain-when-the-bot" target="_blank">
+      <div class="blog-date">Feb 2026</div>
+      <h3>The Digital Disdain: When the Bot Stops Being "Human"</h3>
+      <p class="blog-desc">A look at the trend of AI models drifting away from casual, "human" conversation — and what that shift signals.</p>
+      <div class="blog-read">Read on Substack →</div>
+    </a>
+
+    <a class="blog-card" href="https://neurotusks.substack.com/p/algorithmic-ghosting-why-your-feed" target="_blank">
+      <div class="blog-date">Jan 2026</div>
+      <h3>Algorithmic Ghosting: Why Your Feed Knows Your Thoughts Before You Do</h3>
+      <p class="blog-desc">How recommendation systems on YouTube and Instagram quietly decide what — and who — you get to see.</p>
+      <div class="blog-read">Read on Substack →</div>
+    </a>
+
+    <a class="blog-card" href="https://neurotusks.substack.com/p/the-ai-is-eating-itself" target="_blank">
+      <div class="blog-date">Jan 2026</div>
+      <h3>The AI is Eating Itself</h3>
+      <p class="blog-desc">On model collapse — why AI trained on AI-generated data goes stale, and why original human input is becoming the scarce resource.</p>
+      <div class="blog-read">Read on Substack →</div>
+    </a>
+
+    <a class="blog-card" href="https://neurotusks.substack.com/p/the-geometry-of-thought-how-ai-sees" target="_blank">
+      <div class="blog-date">Nov 2025</div>
+      <h3>The Geometry of Thought: How AI Sees a Multidimensional World</h3>
+      <p class="blog-desc">A plain-language walk through feature space — why ML models "see" hundreds of dimensions a human never could.</p>
+      <div class="blog-read">Read on Substack →</div>
+    </a>
+
+    <a class="blog-card blog-cta" href="https://neurotusks.substack.com/" target="_blank">
+      <h3>Get new essays first</h3>
+      <p class="blog-desc">Two technical deep-dives a week on ML, GenAI, and agentic workflows — written, researched, and published by NeuroTusks.</p>
+      <div class="blog-read">Subscribe on Substack →</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- NEUROTUSKS -->
+<section class="section wrap" id="neurotusks">
+  <div class="feature reveal">
+    <div>
+      <div class="section-tag">// COMMUNITY, SELF-STARTED</div>
+      <h2 style="margin-top:10px;">NeuroTusks</h2>
+      <p>An AI and tech community I founded and write for — technical deep dives on machine learning, GenAI, and agentic workflows, published by an autonomous agent pipeline I built myself. Powered by beer and gradient descent.</p>
+      <div class="feature-links">
+        <a class="btn btn-ghost" href="https://neurotusks.substack.com/" target="_blank">Read on Substack ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/DheerajPranav/neurotusks-agent" target="_blank">See the agent ↗</a>
       </div>
-      <div class="skill-col reveal">
-        <div class="skill-head">ML &amp; Math</div>
-        <span class="chip">Neural Networks</span><span class="chip">Time Series</span><span class="chip">NLP</span><span class="chip">Recommenders</span><span class="chip">CNN</span><span class="chip">Transformers</span><span class="chip">LLMs</span><span class="chip">Agentic AI</span>
-      </div>
-      <div class="skill-col reveal">
-        <div class="skill-head">Theory</div>
-        <span class="chip">ML Lifecycle</span><span class="chip">OOP</span><span class="chip">DSA</span><span class="chip">Statistics</span><span class="chip">Calculus</span>
-      </div>
-      <div class="skill-col reveal">
-        <div class="skill-head">Tools</div>
-        <span class="chip">Airbyte</span><span class="chip">Tableau</span><span class="chip">Jenkins</span><span class="chip">Git</span><span class="chip">Kibana</span><span class="chip">AWS</span><span class="chip">Databricks</span><span class="chip">DBeaver</span>
-      </div>
+    </div>
+    <div class="feature-stat-list">
+      <div class="feature-stat"><span>Cadence</span><span>2 posts / week</span></div>
+      <div class="feature-stat"><span>Focus</span><span>ML · GenAI · Agentic AI</span></div>
+      <div class="feature-stat"><span>Publishing</span><span>Fully autonomous</span></div>
+      <div class="feature-stat"><span>Also on</span><span>YouTube · Discord · Instagram</span></div>
     </div>
   </div>
 </section>
 
-<section id="education">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Education &amp; Certifications</span>
-      <h2>Foundations</h2>
-    </div>
-    <div class="two-col">
-      <div class="reveal">
+<!-- EDUCATION + CERTS -->
+<section class="section wrap">
+  <div class="split">
+    <div class="reveal">
+      <div class="section-tag">// EDUCATION</div>
+      <h2 style="margin-top:10px; font-size:24px;">Formal training</h2>
+      <div style="margin-top:28px;">
         <div class="edu-item">
-          <div class="edu-degree">Master of Science</div>
-          <div class="edu-school">Woolf University</div>
-          <div class="edu-year">2023 — 2025</div>
+          <h3>Master of Science</h3>
+          <div class="tl-time">Woolf University · 2023 – 2025</div>
+          <p>Statistics, Calculus, Advanced Machine Learning, MLOps.</p>
         </div>
         <div class="edu-item">
-          <div class="edu-degree">B.Tech, Computer Science &amp; Engineering</div>
-          <div class="edu-school">Vignan, JNTUH</div>
-          <div class="edu-year">2016 — 2020</div>
+          <h3>Bachelor of Technology, CSE</h3>
+          <div class="tl-time">Vignan, JNTUH · 2016 – 2020</div>
+          <p>Computer Science &amp; Engineering fundamentals.</p>
         </div>
       </div>
-      <div class="reveal">
-        <div class="cert-item"><span class="bullet">›</span> IBM Data Science Professional Certification</div>
-        <div class="cert-item"><span class="bullet">›</span> Udacity Deep Learning &amp; NLP Nanodegree</div>
-        <div class="cert-item"><span class="bullet">›</span> Microsoft Technology Associate — Python</div>
-        <div class="cert-item"><span class="bullet">›</span> Mathematics for Machine Learning (Coursera)</div>
-        <div class="cert-item"><span class="bullet">›</span> Intensive Gen AI &amp; Agentic AI (Google &amp; Kaggle)</div>
-      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag">// CERTIFICATIONS</div>
+      <h2 style="margin-top:10px; font-size:24px;">Continued learning</h2>
+      <ul class="cert-list" style="margin-top:28px;">
+        <li>IBM Data Science Professional Certification</li>
+        <li>Udacity Deep Learning &amp; NLP Nanodegree</li>
+        <li>Microsoft Technology Associate — Python</li>
+        <li>Mathematics for Machine Learning, Coursera</li>
+        <li>Intensive Gen AI and Agentic AI, Google &amp; Kaggle</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-panel reveal">
-      <span class="eyebrow">Contact</span>
-      <h2>Let's build something that ships.</h2>
-      <p>Open to conversations on recommender systems, agentic AI, and ML that has to answer to a business metric.</p>
-      <div class="contact-row">
-        <a class="btn btn-primary" href="mailto:krovvididheeraj@gmail.com">Email me</a>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/dheerajpranav/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn btn-outline" href="https://github.com/DheerajPranav" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-      <div class="contact-meta">
-        <span>krovvididheeraj@gmail.com</span>
-        <span>+91 94410 22725</span>
-        <span>Hyderabad, India</span>
-      </div>
-    </div>
+<!-- CONTACT -->
+<section class="contact wrap" id="contact">
+  <div class="eyebrow">GOT SOMETHING TO BUILD?</div>
+  <h2>Let's put a model into production.</h2>
+  <p>Open to conversations about ML engineering roles, recommender systems, or applied GenAI work. Reach out directly, or find me where I already show up.</p>
+  <div class="contact-actions">
+    <a class="btn btn-primary" href="mailto:krovvididheeraj@gmail.com">krovvididheeraj@gmail.com</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/dheerajpranav/" target="_blank">LinkedIn ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/DheerajPranav" target="_blank">GitHub ↗</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Dheeraj Pranav. Built with intent, not a template.</p>
+  <div class="wrap">
+    <span>© 2026 Dheeraj Pranav · Hyderabad, India</span>
+    <div class="footer-links">
+      <a href="https://neurotusks.substack.com/" target="_blank">Substack</a>
+      <a href="https://github.com/DheerajPranav" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/dheerajpranav/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const els = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  }, {threshold:0.12});
-  els.forEach(el=>io.observe(el));
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-
 </body>
 </html>
