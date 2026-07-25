@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dheeraj Pranav — Machine Learning Engineer</title>
+<title>Dheeraj Pranav — AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -119,20 +119,12 @@
     content:''; width:6px; height:6px; background:var(--amber); border-radius:50%;
     box-shadow:0 0 8px var(--amber);
   }
-  .hero-name{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:clamp(22px, 2.6vw, 28px);
-    color:var(--ink);
-    letter-spacing:-0.01em;
-    margin-bottom:14px;
-  }
-  .hero-title{
-    font-size:clamp(32px, 4.6vw, 52px);
-    line-height:1.06;
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 62px);
+    line-height:1.04;
     color:var(--ink);
   }
-  .hero-title span{ color:var(--ink-faint); }
+  .hero h1 span{ color:var(--ink-faint); }
   .hero-sub{
     margin-top:22px;
     font-size:16.5px;
@@ -370,6 +362,18 @@
   .cert-list li:last-child{ border-bottom:none; }
   .cert-list li::before{ content:'—'; color:var(--ink-faint); flex-shrink:0; }
 
+  /* ---------- publication ---------- */
+  .pub-card{
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:28px;
+    margin-top:28px;
+  }
+  .pub-card h3{ font-size:15.5px; }
+  .pub-card p{ margin-top:8px; color:var(--ink-dim); font-size:13.5px; line-height:1.6; }
+  .pub-card a{ color:var(--signal); }
+  .pub-card a:hover{ text-decoration:underline; }
+
   /* ---------- contact / footer ---------- */
   .contact{
     text-align:center; padding:110px 0 70px;
@@ -414,17 +418,15 @@
 <section class="hero wrap">
   <div>
     <div class="eyebrow">HYDERABAD, INDIA · AI ENGINEERING @ NOVARTIS</div>
-    <div class="hero-name">Dheeraj Pranav</div>
-    <h1 class="hero-title">Making machines<br><span>think — then act.</span></h1>
-    <p class="hero-sub">6+ years moving models from research to production. I bridge foundational math and scalable ML architecture, and my current focus is the shift from applied ML into Generative AI and multi‑agent systems — RAG pipelines, LLM orchestration, and agents that check their own work.</p>
+    <h1>Inspectable agents,<br><span>not impressive demos.</span></h1>
+    <p class="hero-sub">6 years in applied ML, 2 years shipping production LLM and agentic systems. Spent the last three years on the commercial side of a global sales organisation: propensity models that predict buyer behaviour, a channel-mix optimizer that decides where spend goes, and LLM agents that turn plain-English business questions into analyst-grade answers. Typed contracts, forced tool use, computed pass/fail gates, and cost, latency and tokens logged from the first call.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/dheerajpranav/" target="_blank">LinkedIn ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/DheerajPranav" target="_blank">GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://neurotusks.substack.com/" target="_blank">NeuroTusks ↗</a>
+      <a class="btn btn-primary" href="#work">See the work ↓</a>
+      <a class="btn btn-ghost" href="Dheeraj_Pranav.pdf" target="_blank">Download resume</a>
     </div>
     <div class="hero-meta">
-      <div><b>6+ yrs</b> in AI / ML</div>
-      <div><b>1.5+ yrs</b> in GenAI &amp; agentic systems</div>
+      <div><b>6 yrs</b> in AI / ML</div>
+      <div><b>2 yrs</b> shipping LLM &amp; agentic systems</div>
       <div><b>MSc</b> Woolf University, '25</div>
     </div>
   </div>
@@ -458,13 +460,13 @@
       <circle class="sg-node" cx="200" cy="260" r="7"/>
       <circle class="sg-node sg-node-amber" cx="230" cy="300" r="6"/>
 
-      <text class="sg-label" x="8" y="45">llm.core</text>
-      <text class="sg-label" x="150" y="26">rag.retriever</text>
-      <text class="sg-label" x="280" y="76">vector.store</text>
-      <text class="sg-label" x="130" y="178">langchain</text>
-      <text class="sg-label" x="10" y="230">crewai.agent</text>
+      <text class="sg-label" x="8" y="45">claude.sdk</text>
+      <text class="sg-label" x="150" y="26">rag.hybrid</text>
+      <text class="sg-label" x="280" y="76">eval.gate</text>
+      <text class="sg-label" x="130" y="178">pydantic</text>
+      <text class="sg-label" x="10" y="230">tool.force</text>
       <text class="sg-label" x="298" y="205">reflect()</text>
-      <text class="sg-label" x="168" y="285">tool.call</text>
+      <text class="sg-label" x="168" y="285">otel.trace</text>
     </svg>
   </div>
 </section>
@@ -473,20 +475,20 @@
 <div class="stat-strip">
   <div class="wrap">
     <div class="stat">
-      <div class="stat-num"><span>5</span>–<span>20</span>%</div>
-      <div class="stat-label">typical business‑metric lift delivered by production ML models I've shipped</div>
+      <div class="stat-num"><span>+5</span>%</div>
+      <div class="stat-label">annual revenue lift from the omnichannel next-best-action engine</div>
     </div>
     <div class="stat">
-      <div class="stat-num"><span>10</span>%+</div>
-      <div class="stat-label">engagement gains from recommender and CTR models moved into production</div>
+      <div class="stat-num"><span>+10</span>%</div>
+      <div class="stat-label">engagement lift after shipping DeepFM CTR models for content selection</div>
     </div>
     <div class="stat">
-      <div class="stat-num"><span>100</span>%</div>
-      <div class="stat-label">automation on ETL frameworks I've built — zero manual re‑processing</div>
+      <div class="stat-num"><span>11/11</span></div>
+      <div class="stat-label">adversarial eval passing on Mnemo tenant-safe memory layer (from 0/11)</div>
     </div>
     <div class="stat">
-      <div class="stat-num"><span>6</span>+ <span style="font-size:16px;">yrs</span></div>
-      <div class="stat-label">taking models from research notebooks to real, monitored production systems</div>
+      <div class="stat-num"><span>+20</span>%</div>
+      <div class="stat-label">forecast lift after replacing a deep model with a custom statistical approach</div>
     </div>
   </div>
 </div>
@@ -504,19 +506,25 @@
     <div class="tl-item reveal">
       <div class="tl-index">01 / Feb 23</div>
       <div class="tl-body">
-        <h3>Sr. Data Science Analyst</h3>
+        <h3>Sr. Data Science Analyst, AI Engineering</h3>
         <div class="tl-role">Novartis · Hyderabad</div>
         <div class="tl-time">Feb 2023 — Present</div>
         <div class="tl-desc">
           <ul>
-            <li>Spearheaded enterprise adoption of Generative AI, architecting LLM‑driven pipelines over the past 1.5 years to automate insights generation and enhance commercial analytics.</li>
-            <li>Built a Retrieval‑Augmented Generation system that synthesizes complex medical and promotional guidelines, accelerating compliance reviews.</li>
-            <li>Architected a self‑correcting Text‑to‑SQL agent in LangChain that turns natural‑language business questions into prescription‑database queries — with a reflection loop that tests, self‑corrects, and delivers the payload with no manual pull.</li>
-            <li>Led a hybrid Wide‑Deep network (ANN + Transformers) predicting doctor prescriptions, and shipped DeepFM CTR models that lifted engagement 10%+ and RX sales 5% annually.</li>
+            <li>Own the modelling core of an omnichannel next-best-action engine that decides, for every customer and every available touchpoint, whether an outreach is worth making and through which channel. Runs on a recurring cycle across the full field organisation.</li>
+            <li>Built the primary response model, a Wide &amp; Deep architecture with a transformer attention block, predicting expected revenue for every customer-by-channel pair across the full touchpoint mix (field visit, email, webinar, event, digital). Converted channel selection from a static rules-based list into a ranked, quantified decision per account.</li>
+            <li>Built the content-selection layer for non-personal channels using DeepFM CTR models to choose which asset to serve on a given touch, lifting engagement by over 10%.</li>
+            <li>Designed the decision layer downstream of the models: reconciles competing per-channel predictions into one sequenced plan per customer under reach, frequency, and compliance constraints, via a custom business-impact metric and a greedy optimizer.</li>
+            <li>Closed the loop on field feedback: whether a rep acted on, deferred, or ignored a recommendation is captured and fed back as a model feature, so the system learns which recommendations are executable, not only which are theoretically optimal.</li>
+            <li>Added an LLM explanation layer over the decision output so every recommendation reaches a rep with a plain-language rationale grounded in the model's own feature attributions rather than a template.</li>
+            <li>Extended the feature layer with LLM-based structured extraction, turning unstructured field notes and external signals into typed features for the response model, replacing manual tagging with schema-validated extraction.</li>
+            <li>Built a RAG system over medical, legal and regulatory guidelines that pre-screens campaign content before it enters the channel mix, compressing a review cycle that previously gated every asset launch.</li>
+            <li>Built a self-correcting text-to-SQL agent giving commercial stakeholders direct interrogation of engine outputs and the underlying customer data. An autonomous reflection loop validates each query against a sandbox and repairs schema and syntax errors before returning results.</li>
+            <li>Run the half-yearly measurement exercise attributing outcomes back to the engine: primary revenue lift plus secondary engagement and sales-contribution metrics, contributing to a 5% annual revenue lift.</li>
           </ul>
         </div>
         <div class="tl-stack">
-          <span class="chip">LangChain</span><span class="chip">RAG</span><span class="chip">LLMs</span><span class="chip">Databricks</span><span class="chip">Transformers</span>
+          <span class="chip">Python</span><span class="chip">Databricks</span><span class="chip">PySpark</span><span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">Transformers</span><span class="chip">Wide &amp; Deep</span><span class="chip">DeepFM</span><span class="chip">Recommender Systems</span>
         </div>
       </div>
     </div>
@@ -529,12 +537,12 @@
         <div class="tl-time">Apr 2022 — Jan 2023</div>
         <div class="tl-desc">
           <ul>
-            <li>Designed scalable ML pipelines on a Dockerized CDC stack (Airbyte, Airflow, DBT, PostgreSQL) feeding SageMaker and Forecast for automated ingestion and time‑series forecasting.</li>
-            <li>Productionized recommender and deep learning models with PyTorch and AWS Personalize, added anomaly detection via Lookout for Metrics, and automated deploys with Terraform and CI/CD.</li>
+            <li>Designed and deployed scalable ML pipelines on Dockerized CDC data stacks (Airbyte, Airflow, dbt, PostgreSQL) with AWS SageMaker and Forecast for automated ingestion, transformation, and time-series forecasting.</li>
+            <li>Productionised deep learning and recommender models with PyTorch and AWS Personalize; added anomaly detection via Amazon Lookout for Metrics and automated deployment with Terraform and CI/CD for real-time inference.</li>
           </ul>
         </div>
         <div class="tl-stack">
-          <span class="chip">SageMaker</span><span class="chip">Airflow</span><span class="chip">Terraform</span><span class="chip">PyTorch</span>
+          <span class="chip">SageMaker</span><span class="chip">Airflow</span><span class="chip">Terraform</span><span class="chip">PyTorch</span><span class="chip">dbt</span><span class="chip">PostgreSQL</span>
         </div>
       </div>
     </div>
@@ -547,13 +555,14 @@
         <div class="tl-time">Apr 2020 — Mar 2022</div>
         <div class="tl-desc">
           <ul>
-            <li>Built a distributed ML framework for ETL jobs with automatic re‑processing, taking manual intervention to zero.</li>
-            <li>Replaced the sales‑forecasting approach with a custom statistical quantile method, lifting model performance 20%.</li>
-            <li>Built personalized recommenders using hierarchical clustering and ranking for similarity and relevance scoring, plus an explainability dashboard for stakeholders.</li>
+            <li>Built a distributed ML framework for ETL jobs with automatic re-processing, reaching 100% automation across end-to-end pipelines deployed at scale.</li>
+            <li>Replaced a heavier model with a custom statistical quantile approach, improving forecast performance by 20% at lower latency; designed for stateless workers and idempotent execution.</li>
+            <li>Built personalised product recommendations for field sales users using hierarchical clustering and ranking methods for similarity and relevance scoring.</li>
+            <li>Shipped an interpretability dashboard so stakeholders could inspect why a given recommendation was made.</li>
           </ul>
         </div>
         <div class="tl-stack">
-          <span class="chip">Python</span><span class="chip">Jenkins</span><span class="chip">Kibana</span><span class="chip">Clustering</span>
+          <span class="chip">Python</span><span class="chip">CI/CD</span><span class="chip">Jenkins</span><span class="chip">Kibana</span><span class="chip">MySQL</span><span class="chip">AWS S3</span>
         </div>
       </div>
     </div>
@@ -570,33 +579,33 @@
   </div>
   <div class="skill-grid reveal">
     <div class="skill-cell">
-      <h3>GENAI & AGENTIC</h3>
+      <h3>LLMs & AGENTS</h3>
       <div class="tags">
-        <span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">LangChain</span><span class="chip">CrewAI</span><span class="chip">Multi‑Agent Systems</span>
+        <span class="chip">Anthropic Claude SDK</span><span class="chip">Tool Use &amp; MCP</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">CrewAI</span><span class="chip">RAG (Hybrid Chroma + BM25)</span><span class="chip">Reranking</span><span class="chip">Pydantic Contracts</span><span class="chip">Prompt Engineering</span>
       </div>
     </div>
     <div class="skill-cell">
-      <h3>MODELING</h3>
+      <h3>EVALUATION</h3>
       <div class="tags">
-        <span class="chip">Neural Networks</span><span class="chip">Transformers</span><span class="chip">Recommender Systems</span><span class="chip">Time Series</span><span class="chip">NLP</span><span class="chip">CNNs</span>
+        <span class="chip">Golden Eval Sets</span><span class="chip">Pass/Fail Gates</span><span class="chip">LLM-as-Judge</span><span class="chip">Offline Test Harnesses</span><span class="chip">OpenTelemetry Tracing</span><span class="chip">Cost/Latency/Token Accounting</span><span class="chip">pytest</span>
       </div>
     </div>
     <div class="skill-cell">
-      <h3>ENGINEERING & MLOPS</h3>
+      <h3>REVENUE ML</h3>
       <div class="tags">
-        <span class="chip">Python</span><span class="chip">R</span><span class="chip">PySpark</span><span class="chip">Bash</span><span class="chip">Flask</span><span class="chip">MLOps</span><span class="chip">Docker</span>
+        <span class="chip">Next-Best-Action</span><span class="chip">Channel-Mix Optimization</span><span class="chip">Propensity &amp; CTR Modelling</span><span class="chip">Wide &amp; Deep</span><span class="chip">DeepFM</span><span class="chip">Recommender Systems</span><span class="chip">Ranking</span><span class="chip">Uplift Measurement</span><span class="chip">Forecasting</span>
       </div>
     </div>
     <div class="skill-cell">
-      <h3>DATA & INFRA</h3>
+      <h3>ENGINEERING</h3>
       <div class="tags">
-        <span class="chip">Airbyte</span><span class="chip">ETL Pipelines</span><span class="chip">Databricks</span><span class="chip">MySQL</span><span class="chip">AWS</span><span class="chip">Jenkins</span><span class="chip">Kibana</span>
+        <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy</span><span class="chip">REST APIs</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">Ruff / mypy</span>
       </div>
     </div>
-    <div class="skill-cell">
-      <h3>FOUNDATIONS</h3>
+    <div class="skill-cell" style="grid-column: 1 / -1;">
+      <h3>DATA & CLOUD</h3>
       <div class="tags">
-        <span class="chip">Statistics</span><span class="chip">Applied Math</span><span class="chip">DSA</span><span class="chip">OOP</span><span class="chip">ML Lifecycle</span>
+        <span class="chip">Databricks</span><span class="chip">PySpark</span><span class="chip">AWS SageMaker</span><span class="chip">AWS Personalize</span><span class="chip">AWS Forecast</span><span class="chip">Airflow</span><span class="chip">Airbyte</span><span class="chip">dbt</span><span class="chip">Streamlit</span><span class="chip">Tableau</span>
       </div>
     </div>
   </div>
@@ -608,39 +617,34 @@
     <div>
       <div class="section-tag">// SELECTED WORK</div>
       <h2>Projects worth a closer look</h2>
+      <p style="color:var(--ink-faint); font-size:13.5px; margin-top:8px; font-style:italic;">Personal work, built to chase down questions the day job raised but did not have room to answer.</p>
     </div>
   </div>
   <div class="proj-grid reveal">
 
-    <a class="proj-card" href="https://github.com/DheerajPranav/neurotusks-agent" target="_blank">
-      <div class="proj-top"><h3>neurotusks-agent</h3><span class="proj-arrow">↗</span></div>
-      <p class="proj-desc">A CrewAI multi‑agent system running on open‑source LLMs that researches, synthesizes, and publishes NeuroTusks — dynamic news extraction and brand‑consistent writing, with no manual editorial step.</p>
-      <div class="proj-tags"><span class="chip">CrewAI</span><span class="chip">Open‑source LLMs</span><span class="chip">Automation</span></div>
+    <a class="proj-card" href="https://github.com/DheerajPranav/mnemo" target="_blank">
+      <div class="proj-top"><h3>Mnemo</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">Tenant-safe conversational memory layer for GTM agents. The hard part of agent memory is not storing things, it is knowing which stored fact is still true, and keeping one customer's facts away from another's. Tenant isolation is a constructor-scoped invariant rather than a query filter, fact conflicts resolve on the write path, and retrieval abstains rather than guessing. Against a naive baseline on a fixed adversarial set: 0/11 to 11/11 passing, cross-tenant leaks 7 to 0.</p>
+      <div class="proj-tags"><span class="chip">Memory</span><span class="chip">Tenant Isolation</span><span class="chip">Eval Harness</span><span class="chip">Pydantic</span></div>
     </a>
 
-    <div class="proj-card">
-      <div class="proj-top"><h3>Context‑Aware LLM Memory Engine</h3></div>
-      <p class="proj-desc">A persistent long‑term memory module for conversational LLMs — vector embeddings, dynamic entity extraction, and a background loop that compresses old conversations into knowledge graphs so agents recall preferences across sessions.</p>
-      <div class="proj-tags"><span class="chip">Vector DB</span><span class="chip">Memory</span><span class="chip">LLMs</span></div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-top"><h3>Autonomous PR Review Agent</h3></div>
-      <p class="proj-desc">A CrewAI code reviewer wired into GitHub Actions — analyzes diffs, flags vulnerabilities, enforces repo‑specific standards, and leaves context‑aware inline comments on every pull request.</p>
-      <div class="proj-tags"><span class="chip">CrewAI</span><span class="chip">GitHub Actions</span><span class="chip">Code Review</span></div>
-    </div>
-
-    <a class="proj-card" href="https://github.com/DheerajPranav/ML-Personalised-FrameWork" target="_blank">
-      <div class="proj-top"><h3>ML‑Personalised‑Framework</h3><span class="proj-arrow">↗</span></div>
-      <p class="proj-desc">Core ML algorithms rebuilt from scratch — de‑bunking the black box behind the libraries most people just import.</p>
-      <div class="proj-tags"><span class="chip">Python</span><span class="chip">From scratch</span></div>
+    <a class="proj-card" href="https://github.com/DheerajPranav/gtm-signal-intelligence" target="_blank">
+      <div class="proj-top"><h3>GTM Signal Intelligence</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">Grounded, evaluated revenue intelligence pipeline. Turns raw GTM signals into structured intelligence a RevOps team could trust. Extraction runs through forced tool use against closed schemas, every extracted value carries its own evidence and confidence, answers are cited through hybrid retrieval, and nothing ships without a computed pass/fail gate.</p>
+      <div class="proj-tags"><span class="chip">Forced Tool Use</span><span class="chip">Hybrid Retrieval</span><span class="chip">Pass/Fail Gates</span><span class="chip">RevOps</span></div>
     </a>
 
-    <div class="proj-card">
-      <div class="proj-top"><h3>Twitter Abusive Content Detection</h3></div>
-      <p class="proj-desc">Published research on flagging abusive tweets — Twitter API collection, NLTK preprocessing, TF‑IDF and embeddings feeding classical and deep models.</p>
-      <div class="proj-tags"><span class="chip">NLTK</span><span class="chip">TF‑IDF</span><span class="chip">Published</span></div>
-    </div>
+    <a class="proj-card" href="https://github.com/DheerajPranav/rift-agent-reliability" target="_blank">
+      <div class="proj-top"><h3>RIFT</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">Chaos engineering and reliability testing for tool-using agents. Agent benchmarks test the happy path. Production agents issue duplicate refunds when a confirmation is lost after a successful write. RIFT injects a taxonomy of realistic tool and data failures, then replays a scenario exactly or counterfactually to compare how different prompts and models behave under identical faults.</p>
+      <div class="proj-tags"><span class="chip">Chaos Engineering</span><span class="chip">Fault Injection</span><span class="chip">Agent Testing</span><span class="chip">Replay</span></div>
+    </a>
+
+    <a class="proj-card" href="https://neurotusks.substack.com" target="_blank">
+      <div class="proj-top"><h3>NeuroTusks Agent</h3><span class="proj-arrow">↗</span></div>
+      <p class="proj-desc">Autonomous multi-agent publishing pipeline. A twice-weekly AI newsletter researched, written and published by a multi-agent pipeline with no manual editorial step. The interesting constraint was cost: swapping a paid API for an open-weight model behind a single centralised LLM wrapper took running cost to zero without touching a downstream agent.</p>
+      <div class="proj-tags"><span class="chip">Multi-Agent</span><span class="chip">Open-Weight LLMs</span><span class="chip">Automation</span><span class="chip">Cost Optimization</span></div>
+    </a>
 
   </div>
 </section>
@@ -666,34 +670,34 @@
     <a class="blog-card" href="https://neurotusks.substack.com/p/the-digital-disdain-when-the-bot" target="_blank">
       <div class="blog-date">Feb 2026</div>
       <h3>The Digital Disdain: When the Bot Stops Being "Human"</h3>
-      <p class="blog-desc">A look at the trend of AI models drifting away from casual, "human" conversation — and what that shift signals.</p>
+      <p class="blog-desc">A look at the trend of AI models drifting away from casual, "human" conversation, and what that shift signals.</p>
       <div class="blog-read">Read on Substack →</div>
     </a>
 
     <a class="blog-card" href="https://neurotusks.substack.com/p/algorithmic-ghosting-why-your-feed" target="_blank">
       <div class="blog-date">Jan 2026</div>
       <h3>Algorithmic Ghosting: Why Your Feed Knows Your Thoughts Before You Do</h3>
-      <p class="blog-desc">How recommendation systems on YouTube and Instagram quietly decide what — and who — you get to see.</p>
+      <p class="blog-desc">How recommendation systems on YouTube and Instagram quietly decide what, and who, you get to see.</p>
       <div class="blog-read">Read on Substack →</div>
     </a>
 
     <a class="blog-card" href="https://neurotusks.substack.com/p/the-ai-is-eating-itself" target="_blank">
       <div class="blog-date">Jan 2026</div>
       <h3>The AI is Eating Itself</h3>
-      <p class="blog-desc">On model collapse — why AI trained on AI-generated data goes stale, and why original human input is becoming the scarce resource.</p>
+      <p class="blog-desc">On model collapse: why AI trained on AI-generated data goes stale, and why original human input is becoming the scarce resource.</p>
       <div class="blog-read">Read on Substack →</div>
     </a>
 
     <a class="blog-card" href="https://neurotusks.substack.com/p/the-geometry-of-thought-how-ai-sees" target="_blank">
       <div class="blog-date">Nov 2025</div>
       <h3>The Geometry of Thought: How AI Sees a Multidimensional World</h3>
-      <p class="blog-desc">A plain-language walk through feature space — why ML models "see" hundreds of dimensions a human never could.</p>
+      <p class="blog-desc">A plain-language walk through feature space, why ML models "see" hundreds of dimensions a human never could.</p>
       <div class="blog-read">Read on Substack →</div>
     </a>
 
     <a class="blog-card blog-cta" href="https://neurotusks.substack.com/" target="_blank">
       <h3>Get new essays first</h3>
-      <p class="blog-desc">Two technical deep-dives a week on ML, GenAI, and agentic workflows — written, researched, and published by NeuroTusks.</p>
+      <p class="blog-desc">Two technical deep-dives a week on ML, GenAI, and agentic workflows, written, researched, and published by NeuroTusks.</p>
       <div class="blog-read">Subscribe on Substack →</div>
     </a>
 
@@ -706,10 +710,11 @@
     <div>
       <div class="section-tag">// COMMUNITY, SELF-STARTED</div>
       <h2 style="margin-top:10px;">NeuroTusks</h2>
-      <p>An AI and tech community I founded and write for — technical deep dives on machine learning, GenAI, and agentic workflows, published by an autonomous agent pipeline I built myself. Powered by beer and gradient descent.</p>
+      <p>An AI and tech community I founded and write for. Technical deep dives on machine learning, GenAI, and agentic workflows, published by an autonomous agent pipeline I built myself. Powered by beer and gradient descent.</p>
       <div class="feature-links">
         <a class="btn btn-ghost" href="https://neurotusks.substack.com/" target="_blank">Read on Substack ↗</a>
-        <a class="btn btn-ghost" href="https://github.com/DheerajPranav/neurotusks-agent" target="_blank">See the agent ↗</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@machinelearningclub513" target="_blank">YouTube ↗</a>
+        <a class="btn btn-ghost" href="https://discord.gg/fJzS9VKU" target="_blank">Discord ↗</a>
       </div>
     </div>
     <div class="feature-stat-list">
@@ -721,7 +726,7 @@
   </div>
 </section>
 
-<!-- EDUCATION + CERTS -->
+<!-- EDUCATION + CERTS + PUBLICATION -->
 <section class="section wrap">
   <div class="split">
     <div class="reveal">
@@ -736,8 +741,14 @@
         <div class="edu-item">
           <h3>Bachelor of Technology, CSE</h3>
           <div class="tl-time">Vignan, JNTUH · 2016 – 2020</div>
-          <p>Computer Science &amp; Engineering fundamentals.</p>
+          <p>Computer Science &amp; Engineering.</p>
         </div>
+      </div>
+
+      <div class="section-tag" style="margin-top:36px;">// PUBLICATION</div>
+      <div class="pub-card">
+        <h3>Classification for Detecting Insulting and Abusive Content</h3>
+        <p>Published in IJAEMA. Twitter API collection, TF-IDF and word embeddings, traditional and deep models. <a href="https://www.researchgate.net/publication/341398253_Classification_for_Detecting_Insulting_and_Abusive_Content_The_International_journal_of_analytical_and_experimental_modal_analysis" target="_blank">Read on ResearchGate ↗</a></p>
       </div>
     </div>
     <div class="reveal">
@@ -746,9 +757,9 @@
       <ul class="cert-list" style="margin-top:28px;">
         <li>IBM Data Science Professional Certification</li>
         <li>Udacity Deep Learning &amp; NLP Nanodegree</li>
-        <li>Microsoft Technology Associate — Python</li>
         <li>Mathematics for Machine Learning, Coursera</li>
-        <li>Intensive Gen AI and Agentic AI, Google &amp; Kaggle</li>
+        <li>Intensive GenAI and Agentic AI, Google &amp; Kaggle</li>
+        <li>Microsoft Technology Associate, Python</li>
       </ul>
     </div>
   </div>
@@ -757,8 +768,8 @@
 <!-- CONTACT -->
 <section class="contact wrap" id="contact">
   <div class="eyebrow">GOT SOMETHING TO BUILD?</div>
-  <h2>Let's put a model into production.</h2>
-  <p>Open to conversations about ML engineering roles, recommender systems, or applied GenAI work. Reach out directly, or find me where I already show up.</p>
+  <h2>Let's put an agent into production.</h2>
+  <p>Open to conversations about AI engineering roles, agentic systems, revenue ML, or applied GenAI work. Reach out directly, or find me where I already show up.</p>
   <div class="contact-actions">
     <a class="btn btn-primary" href="mailto:krovvididheeraj@gmail.com">krovvididheeraj@gmail.com</a>
     <a class="btn btn-ghost" href="https://www.linkedin.com/in/dheerajpranav/" target="_blank">LinkedIn ↗</a>
